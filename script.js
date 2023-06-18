@@ -13,6 +13,7 @@ document.querySelector("#file").addEventListener("change", (event) => {
         (async () => {
             const worker = await Tesseract.createWorker();
             document.querySelector('#result p').innerText = "Initialzing..."
+            window.location.href = "/index.html#result"
             await worker.loadLanguage(document.querySelector('#lang').value);
             await worker.initialize(document.querySelector('#lang').value);
             const { data: { confidence, text } } = await worker.recognize(base64);
