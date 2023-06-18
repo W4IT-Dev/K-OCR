@@ -1,0 +1,23 @@
+{
+    "version": "1.0.0",
+    "name": "K-COR",
+    "description": "A simple app to save your collection.",
+    "type": "web",
+    "launch_path": "/index.html",
+    "icons": {
+      "56": "/icon.png",
+      "112": "/icon.png"
+    },
+    "developer": {
+      "name": "W4IT Dev",
+      "url": "https://www.kaiostech.com/"
+    },
+    "locales": {
+      "en-US": {
+        "name": "Collection App",
+        "subtitle": "Learn Morse Code with this simple app.",
+        "description": "Learn Morse Code with this app. This app also features a morse code translator."
+      }
+    },
+    "default_locale": "en-US"
+}

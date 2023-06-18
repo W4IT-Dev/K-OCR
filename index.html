@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- v4 -->
+    <script src='tesseract.js'></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="input">
+        <input type="file" id="file" style="display: none;" />
+        <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />
+        <div>
+            <label for="lang">Language</label>
+            <select name="lang" id="lang">
+                <option value="eng">English</option>
+                <option value="deu">German</option>
+            </select>
+        </div>
+    </div>
+    <div id="image" tabindex="1">
+        <img alt="upload an image" style="max-width: 200px;">
+    </div>
+    <div id="result" tabindex="1">
+        <h2>Result:</h2>
+        <p></p>
+    </div>
+</body>
+
+</html>
