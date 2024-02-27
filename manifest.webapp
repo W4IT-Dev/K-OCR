@@ -1,6 +1,6 @@
 {
-    "version": "1.0.0",
-    "name": "K-COR",
+    "version": "0.0.1",
+    "name": "ocr",
     "description": "A simple app to save your collection.",
     "type": "web",
     "launch_path": "/index.html",
@@ -14,10 +14,11 @@
     },
     "locales": {
       "en-US": {
-        "name": "Collection App",
+        "name": "OCR",
         "subtitle": "Learn Morse Code with this simple app.",
         "description": "Learn Morse Code with this app. This app also features a morse code translator."
       }
     },
+    "cursor":true,
     "default_locale": "en-US"
 }

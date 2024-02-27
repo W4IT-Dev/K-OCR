@@ -4,16 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- v4 -->
+    <title>ocr</title>
+    <link rel="stylesheet" href="kaios-native-ui.css">
+    <script src="kaios-native-ui.js" defer></script>
+    <!-- v5 i think -->
     <script src='tesseract.js'></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <div class="input">
-        <input type="file" id="file" style="display: none;" />
+    <div id="app">
+        <header id="header">Image to text</header>
+        <div class="toast"></div>
+
+        <div class="content center_items" id="home">
+            <div class="button-container">
+                <input type="file" accept="image/*" id="file" style="display: none;" />
+                <button tabindex="0" id="selectFile" onclick="document.getElementById('file').click();"
+                    class="button-container__button focusable">
+                    Choose photo
+                </button>
+                <button id="historyButton" tabindex="0" class="button-container__button focusable" onclick="updateHistory();">
+                    History
+                </button>
+            </div>
+        </div>
+
+        <div class="content hidden" id="history"></div>
+
+        <div class="content hidden" style="text-align: center; "  id="image_selected">
+            <img src="" alt="Selected image" style="height: 200px; max-width: 220px;">
+            <div class="input-container autocomplete">
+                <label class="input-container__label" style="text-align: left;">Language</label>
+                <input type="text" tabindex="0" data-value="eng" value="English"
+                    class="input-container__input focusable" />
+            </div>
+            <div class="button-container">
+                <!-- <button tabindex="0" class="button-container__button focusable"
+                    onclick="">Crop image</button> -->
+                <button tabindex="0" class="button-container__button focusable"
+                    onclick="useTesseract(base64);">Start</button>
+                <button tabindex="0" class="button-container__button focusable" style="transform: scale(80%);"
+                    onclick="go();">Back</button>
+            </div>
+        </div>
+        <div class="content hidden center_items" style="flex-direction: column;" id="load">
+            <div class="progress-container" tabindex="0">
+                <label class="progress-container__label" id="status"></label>
+                <progress value="0" max="100" class="progress-container__progress focusable" id="progress"></progress>
+            </div>
+        </div>
+
+        <div class="content hidden" id="ocr_result">
+            <div class="separator" id="confidence">separator</div>
+            <div class="textarea-container">
+                <label class="textarea-container__label">Result</label>
+                <textarea tabindex="0" class="textarea-container__textarea focusable"></textarea>
+            </div>
+            <div class="button-container button-round-container two-button-container">
+                <div class="round_button button-container__button focusable" tabindex="0">
+                    <img src="download-file-icon.svg" alt="">
+                </div>
+                <div class="round_button button-container__button focusable" tabindex="0">
+                    <img src="share.svg" alt="">
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div class="softkeys">
+            <div class="softkey softkey-left"></div>
+            <div class="softkey softkey-center">Select</div>
+            <div class="softkey softkey-right"></div>
+        </div>
+        <!-- <div class="input">
         <input type="button" value="Browse..." onclick="document.getElementById('file').click();" />
         <div>
             <label for="lang">Language</label>
@@ -29,7 +95,7 @@
     <div id="result" tabindex="1">
         <h2>Result:</h2>
         <p></p>
-    </div>
+    </div> -->
 </body>
 
 </html>
