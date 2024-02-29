@@ -3,29 +3,38 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ocr</title>
+    <title>OCR - Image to text</title>
+    <script src="/translations/translate.js" defer></script>
+
     <link rel="stylesheet" href="kaios-native-ui.css">
     <script src="kaios-native-ui.js" defer></script>
+
     <!-- v5 i think -->
-    <script src='tesseract.js'></script>
+    <script src='tesseract.js' defer></script>
+
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
     <div id="app">
-        <header id="header">Image to text</header>
         <div class="toast"></div>
+        <header id="header" data-translate="image_to_text">Image to text</header>
+
+        <div class="content center_items hidden" id="offline">
+            <img src="" alt="No Internet">
+            <h2 data-translate="connect_with_internet">Connect with Internet</h2>
+            <p data-translate="is_offline">You are offline. Check the connection.</p>
+        </div>
 
         <div class="content center_items" id="home">
             <div class="button-container">
                 <input type="file" accept="image/*" id="file" style="display: none;" />
-                <button tabindex="0" id="selectFile" onclick="document.getElementById('file').click();"
+                <button data-translate="choose_image" tabindex="0" id="selectFile" onclick="document.getElementById('file').click();"
                     class="button-container__button focusable">
                     Choose photo
                 </button>
-                <button id="historyButton" tabindex="0" class="button-container__button focusable" onclick="updateHistory();">
+                <button data-translate="history" id="historyButton" tabindex="0" class="button-container__button focusable" onclick="updateHistory();">
                     History
                 </button>
             </div>
@@ -36,16 +45,16 @@
         <div class="content hidden" style="text-align: center; "  id="image_selected">
             <img src="" alt="Selected image" style="height: 200px; max-width: 220px;">
             <div class="input-container autocomplete">
-                <label class="input-container__label" style="text-align: left;">Language</label>
+                <label data-translate="language" class="input-container__label" style="text-align: left;">Language</label>
                 <input type="text" tabindex="0" data-value="eng" value="English"
                     class="input-container__input focusable" />
             </div>
             <div class="button-container">
                 <!-- <button tabindex="0" class="button-container__button focusable"
                     onclick="">Crop image</button> -->
-                <button tabindex="0" class="button-container__button focusable"
+                <button data-translate="start" tabindex="0" class="button-container__button focusable"
                     onclick="useTesseract(base64);">Start</button>
-                <button tabindex="0" class="button-container__button focusable" style="transform: scale(80%);"
+                <button data-translate="back" tabindex="0" class="button-container__button focusable" style="transform: scale(80%);"
                     onclick="go();">Back</button>
             </div>
         </div>
@@ -59,16 +68,16 @@
         <div class="content hidden" id="ocr_result">
             <div class="separator" id="confidence">separator</div>
             <div class="textarea-container">
-                <label class="textarea-container__label">Result</label>
+                <label data-translate="result" class="textarea-container__label">Result</label>
                 <textarea tabindex="0" class="textarea-container__textarea focusable"></textarea>
             </div>
             <div class="button-container button-round-container two-button-container">
-                <div class="round_button button-container__button focusable" tabindex="0">
-                    <img src="download-file-icon.svg" alt="">
-                </div>
-                <div class="round_button button-container__button focusable" tabindex="0">
-                    <img src="share.svg" alt="">
-                </div>
+                <button class="round_button button-container__button focusable" tabindex="0" onclick="download();">
+                    <img src="download.png" alt="Download">
+                </button>
+                <button class="round_button button-container__button focusable" tabindex="0" onclick="share();">
+                    <img src="share.png" alt="Share">
+                </button>
             </div>
             
             
